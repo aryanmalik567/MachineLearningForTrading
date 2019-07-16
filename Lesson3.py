@@ -16,4 +16,6 @@ def test_run():
 if __name__ == "__main__":
     test_run()
 
-#test changes
+
+def newFunction():
+    pass
