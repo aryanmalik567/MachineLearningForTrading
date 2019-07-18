@@ -29,7 +29,7 @@ def get_data(symbols, dates):
     for symbol in symbols:
         # Read and join data for each symbol
 
-        df_temp = pd.read_csv('data/{}.csv'.format(symbol), index_col="Date", parse_dates=True,
+        df_temp = pd.read_csv('Data/{}.csv'.format(symbol), index_col="Date", parse_dates=True,
                               usecols=['Date', 'Adj Close'], na_values=['nan'])
         df_temp = df_temp.rename(columns={'Adj Close': symbol})
         df = df.join(df_temp)
