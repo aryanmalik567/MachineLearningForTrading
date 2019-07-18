@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
+os.chdir("C:/Users/aryan/PycharmProjects/MachineLearningForTrading/")
 
 def plot_selected(title, df, columns, start_index, end_index):
     """Plot the desired columns over index values in the given range."""

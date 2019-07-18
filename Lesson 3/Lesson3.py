@@ -1,4 +1,7 @@
 import pandas as pd
+import os
+
+os.chdir("C:/Users/aryan/PycharmProjects/MachineLearningForTrading/")
 
 
 def test_run():
