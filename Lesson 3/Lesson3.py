@@ -22,7 +22,7 @@ def test_run():
     # Generalised method to add more stocks
     symbols = ['GOOG', 'IBM', 'GLD']
     for symbol in symbols:
-        df_temp = pd.read_csv('data/{}.csv'.format(symbol), index_col="Date", parse_dates=True,
+        df_temp = pd.read_csv('Data/{}.csv'.format(symbol), index_col="Date", parse_dates=True,
                               usecols=['Date', 'Adj Close'], na_values=['nan'])
         df_temp = df_temp.rename(columns={'Adj Close': symbol})
         df1 = df1.join(df_temp)
