@@ -46,9 +46,9 @@ def get_bollinger_bands(rm, rstd):
 
 
 def compute_daily_returns(df):
-    daily_returns = df.copy()
-    daily_returns[1:] = (df[1:] / df[:-1].values) - 1
-    daily_returns.iloc[0, :] = 0  # Set daily returns for row 0 to 0
+    # daily_returns = df.copy()
+    # daily_returns[1:] = (df[1:] / df[:-1].values) - 1
+    # daily_returns.iloc[0, :] = 0  # Set daily returns for row 0 to 0
     # return daily_returns
 
     # Computing with pandas instead
