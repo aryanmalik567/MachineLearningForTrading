@@ -48,9 +48,17 @@ def get_bollinger_bands(rm, rstd):
 def compute_daily_returns(df):
     daily_returns = df.copy()
     daily_returns[1:] = (df[1:] / df[:-1].values) - 1
-    daily_returns.loc[0, :] = 0  # Set daily returns for row 0 to 0
-    return daily_returns
+    daily_returns.iloc[0, :] = 0  # Set daily returns for row 0 to 0
+    # return daily_returns
 
+    # Computing with pandas instead
+    pd_daily_returns = (df / df.shift(1)) - 1
+    pd_daily_returns.iloc[0, :] = 0  # Pandas will set values at this row as NaN by default, so wont show on graph
+    return pd_daily_returns
+
+
+def compute_cumulative_return(df):
+    return (df.iloc[-1] / df.iloc[0]) - 1
 
 def test_run2():
     # Read data
@@ -80,8 +88,6 @@ def test_run2():
     ax.legend(loc='upper left')
     plt.show()
 
-
-
     # Axis labels
     ax.set_xlabel("Date")
     ax.set_ylabel("Price")
@@ -100,5 +106,7 @@ def test_run3():
     daily_returns = compute_daily_returns(df)
     plot_data(daily_returns, title="Daily returns", ylabel="Daily returns")
 
+    print("\nCumulative return:\n", compute_cumulative_return(df))
 
 
+test_run3()

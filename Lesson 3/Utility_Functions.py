@@ -45,10 +45,10 @@ def normalize_data(df):
     return df / df.iloc[0, :]
 
 
-def plot_data(df):
-    axis = df.plot(title="Stock prices")
-    axis.set_xlabel("Date")
-    axis.set_ylabel("Prices")
+def plot_data(df, title="Stock prices", xlabel="Date", ylabel="Prices"):
+    axis = df.plot(title=title)
+    axis.set_xlabel(xlabel)
+    axis.set_ylabel(ylabel)
 
     plt.show()
 
