@@ -24,8 +24,6 @@ def symbol_to_path(symbol, base_dir="data"):
 def get_data(symbols, dates):
     """Read stock data (adjusted close) for given symbols from CSV files."""
     df = pd.DataFrame(index=dates)
-    if 'SPY' not in symbols:  # add SPY for reference, if absent
-        symbols.insert(0, 'SPY')
 
     for symbol in symbols:
         # Read and join data for each symbol
@@ -35,8 +33,7 @@ def get_data(symbols, dates):
         df_temp = df_temp.rename(columns={'Adj Close': symbol})
         df = df.join(df_temp)
 
-        if symbol == 'SPY':
-            df = df.dropna(subset=['SPY'])
+        df = df.dropna()
 
     return df
 
