@@ -5,9 +5,12 @@ import sys
 sys.path.append("C:/Users/aryan/PycharmProjects/MachineLearningForTrading/Lesson 3")
 # noinspection PyUnresolvedReferences
 from Utility_Functions import get_data, plot_data
-sys.path.append("C:/Users/aryan/PycharmProjects/MachineLearningForTrading/Lesson 5")
-# noinspection PyUnresolvedReferences
-from Rolling_Statistics import compute_daily_returns
+
+
+def compute_daily_returns(df):
+    pd_daily_returns = (df / df.shift(1)) - 1
+    pd_daily_returns.iloc[0, :] = 0  # Pandas will set values at this row as NaN by default, so wont show on graph
+    return pd_daily_returns
 
 
 def test_run():
@@ -18,9 +21,9 @@ def test_run():
 
     # Compute daily returns
     daily_returns = compute_daily_returns(df)
-    plot_data(daily_returns, title="Daily returns", ylabel="Daily returns")
+    # plot_data(daily_returns, title="Daily returns", ylabel="Daily returns")
 
-    # daily_returns.hist()
+    plt.hist(daily_returns, bins=3)
 
 
 test_run()
