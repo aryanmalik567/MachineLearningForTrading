@@ -60,6 +60,9 @@ def test_run():
     l_fit = fit_line(data, error)
     print("Fitted line: C0 = {}, C1 = {}".format(l_fit[0], l_fit[1]))
     plt.plot(data[:, 0], l_fit[0] * data[:, 0] + l_fit[1], 'r--', linewidth=2.0, label="Fitted line")
+
+    # Add legend and show plot
+    plt.legend(loc="upper left")
     plt.show()
 
 
